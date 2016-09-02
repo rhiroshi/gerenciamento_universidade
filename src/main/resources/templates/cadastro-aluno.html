@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Cadastro de Funcionário</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{stylesheets/vendors.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{stylesheets/algaworks.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{stylesheets/application.css}" />
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+		<!-- Comeca Conteudo -->
+		<section layout:fragment="conteudo">
+
+
+			<div class="page-header">
+				<div class="container-fluid">
+					<h1>Cadastro de Aluno</h1>
+				</div>
+			</div>
+			<form method="POST" th:object="${aluno}">
+				<div class="container-fluid">
+
+					<div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<th:block th:each="erro : ${#fields.detailedErrors()}">
+						<i class="fa  fa-exclamation-circle"></i> <span th:text="${erro.message}">ERRO</span>
+						</th:block>
+					</div>
+						<div class="row">
+							<div class="form-group col-sm-3 ">
+								<label>Curso</label>
+								<select id="aluno-curso" class="form-control" th:field="*{curso}">
+								<option value="">Selecione o Curso</option>
+								<option th:each="curso: ${cursos}" th:value="${curso.codigo}" th:text="${curso.nomeCurso}"></option></select>
+							</div>
+							<div class="form-group col-sm-3 ">
+								<label>Departamento</label>
+								<select id="aluno-departamento" class="form-control" th:field="*{departamento}">
+								<option value="">Selecione o Departamento</option>
+								<option th:each="departamento: ${departamentos}" th:value="${departamento.codigo}" th:text="${departamento.nomeDepartamento}"></option></select>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group col-sm-3">
+								<label for="input-aluno-nome">Código</label> <input
+									id="input-aluno-codigo" type="text" class="form-control" th:field="*{codigo}" />
+							</div><div class="form-group col-sm-3">
+								<label for="input-aluno-nome">Nome</label> <input
+									id="input-aluno-nome" type="text" class="form-control" th:field="*{nomeAluno}" placeholder="Digite o nome" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-5">
+								<label for="input-aluno-endereco">Endereço</label> <input
+									id="input-aluno-endereco" type="text" class="form-control" th:field="*{endereco}" placeholder="Digite o nome e número da rua"></input>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label for="input-aluno-nascimento">Data de
+										nascimento</label> <input id="input-funcionario-nascimento"
+										type="text" class="form-control" th:field="*{dataNascimento}"
+										data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+										data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<button class="btn  btn-primary" type="submit">Salvar</button>
+						</div>
+				</div>
+			</form>
+		</section>
+
+		<!-- 	Fim do conteudo -->
+
+</body>
+</html>
