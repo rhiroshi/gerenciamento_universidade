@@ -5,6 +5,14 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/vendors.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/algaworks.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/application.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/layoutPadrao.css}" />
 </head>
 <body>
 	<div class="aw-layout-loading  js-loading-overlay">
@@ -23,8 +31,8 @@
 			<div class="container-fluid">
 
 				<div class="navbar-header">
-					<a class="navbar-brand  hidden-xs" href="#"> <img
-						alt="AlgaWorks" th:href="@{images/logo.png}" />
+					<a class="navbar-brand  hidden-xs" href="#"> 
+						<img id="logo-utfpr" alt="logo" th:src="@{/images/logo-simples.png}" />
 					</a>
 
 					<ul class="nav  navbar-nav">
@@ -35,7 +43,7 @@
 
 				<ul class="nav navbar-nav  navbar-right">
 
-					<li><a href="#"><em class="fa  fa-sign-out"></em></a></li>
+					<li><a href="/logout"><em class="fa  fa-sign-out"></em></a></li>
 				</ul>
 
 			</div>
@@ -50,7 +58,7 @@
 				<nav class="aw-menu  js-menu">
 					<ul class="aw-menu__list">
 
-						<li class="aw-menu__item"><a href="dashboard.html"><i
+						<li class="aw-menu__item"><a href="/"><i
 								class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a></li>
 
 						<li class="aw-menu__item  is-active"><a href="#"> <i
@@ -59,38 +67,25 @@
 						</a>
 
 							<ul class="aw-menu__list  aw-menu__list--sublist">
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="cadastro-produto.html">Cadastro de Funcionário</a></li>
 								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
-									href="cadastro-departamento.html">Cadastro de Departamento</a></li>
+									href="/atividade/novo">Cadastro de Atividade</a></li>
 								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
-									href="cadastro-curso.html">Cadastro de Curso</a></li>
+									href="/cadastro-turma">Cadastro de Turma</a></li>
 								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
-									href="cadastro-disciplina.html">Cadastro de Disciplina</a></li>
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="tabela-sem-dados.html">Tabela sem dados</a></li>
+									href="/cadastro-professor">Cadastro de Professor</a></li>
+								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
+									href="/cadastro-departamento">Cadastro de Departamento</a></li>
+								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
+									href="/cadastro-curso">Cadastro de Curso</a></li>
+								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
+									href="/cadastro-disciplina">Cadastro de Disciplina</a></li>
+								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
+									href="/cadastro-aluno">Cadastro de Aluno</a></li>
+								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
+									href="/cadastro-matricula">Cadastro de Matricula</a></li>
+								<li class="aw-menu__item  aw-menu__item--link  is-active"><a
+									href="/professor/designarAtividade">Designar para Professor</a></li>
 							</ul></li>
-
-						<li class="aw-menu__item  is-expanded"><a href="#"> <i
-								class="fa  fa-fw  fa-file-text"></i><span>Páginas comuns</span>
-								<i class="aw-menu__navigation-icon  fa"></i>
-						</a>
-
-							<ul class="aw-menu__list  aw-menu__list--sublist">
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="pagina-vazia.html">Página vazia</a></li>
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="login.html">Login</a></li>
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="esqueceu-a-senha.html">Esqueceu a senha</a></li>
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="403.html">403</a></li>
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="404.html">404</a></li>
-								<li class="aw-menu__item  aw-menu__item--link"><a
-									href="500.html">500</a></li>
-							</ul></li>
-
 					</ul>
 				</nav>
 
@@ -113,8 +108,8 @@
 
 </div>
 
-	<script th:src="@{javascripts/vendors.min.js}"></script>
-	<script th:src="@{javascripts/algaworks.min.js}"></script>
+	<script th:src="@{/javascripts/vendors.min.js}"></script>
+	<script th:src="@{/javascripts/algaworks.min.js}"></script>
 
 </body>
 </html>

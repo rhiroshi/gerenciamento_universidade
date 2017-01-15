@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Cadastro de Funcionário</title>
+<title>Cadastro de Professor</title>
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{stylesheets/vendors.min.css}" />
@@ -25,76 +25,118 @@
 </head>
 <body>
 
-		<!-- Comeca Conteudo -->
-		<section layout:fragment="conteudo">
+	<!-- Comeca Conteudo -->
+	<section layout:fragment="conteudo">
 
 
-			<div class="page-header">
-				<div class="container-fluid">
-					<h1>Cadastro de Funcionário</h1>
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Cadastro de Professor</h1>
+			</div>
+		</div>
+		<form method="POST" th:object="${professor}">
+			<div class="container-fluid">
+
+				<div class="alert alert-success alert-dismissible " role="alert"
+					th:if="${not #strings.isEmpty(mensagem)}">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span th:text="${mensagem}"></span>
+				</div>
+				<div class="alert  alert-danger  alert-dismissible" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<th:block th:each="erro : ${#fields.detailedErrors()}">
+						<i class="fa  fa-exclamation-circle"></i>
+						<span th:text="${erro.message}">ERRO</span>
+					</th:block>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-3 ">
+						<label>Departamento</label> <select id="professor-departamento"
+							class="form-control" th:field="*{departamento}">
+							<option value="">Selecione o Departamento</option>
+							<option th:each="departamento: ${departamentos}"
+								th:value="${departamento.codigo}"
+								th:text="${departamento.nomeDepartamento}"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-3">
+						<label for="input-SIAPE">Código SIAPE</label> <input
+							id="input-SIAPE" type="text" class="form-control"
+							th:field="*{SIAPE}" />
+					</div>
+					<div class="form-group col-sm-3">
+						<label for="input-funcionario-nome">Nome</label> <input
+							id="input-professor-nome" type="text" class="form-control"
+							th:field="*{nome}" placeholder="Digite o nome" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-5">
+						<label for="input-funcionario-endereco">Endereço</label> <input
+							id="input-professor-endereco" type="text" class="form-control"
+							th:field="*{endereco}"
+							placeholder="Digite o nome e número da rua"></input>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="input-funcionario-nascimento">Data de
+								nascimento</label> <input id="input-funcionario-nascimento" type="text"
+								class="dataNascimento form-control" th:field="*{dataNascimento}"
+								placeholder="DD/MM/YYYY" />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
 				</div>
 			</div>
-			<form method="POST" th:object="${funcionario}">
-				<div class="container-fluid">
+		</form>
 
-					<div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<th:block th:each="erro : ${#fields.detailedErrors()}">
-						<i class="fa  fa-exclamation-circle"></i> <span th:text="${erro.message}">ERRO</span>
-						</th:block>
-					</div>
-						<div class="row">
-							<div class="form-group col-sm-3 ">
-								<label>Tipo de funcionário</label>
-								<select id="funcionario-tipo" class="form-control" th:field="*{tipoFuncionario}">
-								<option value="">Selecione o tipo de funcionário</option>
-								<option th:each="tipo : ${tiposFuncionario}" th:value="${tipo}" th:text="${tipo.descricao}"></option></select>
-							</div>
-							<div class="form-group col-sm-3 ">
-								<label>Departamento</label>
-								<select id="funcionario-departamento" class="form-control" th:field="*{departamento}">
-								<option value="">Selecione o Departamento</option>
-								<option th:each="departamento: ${departamentos}" th:value="${departamento.codigo}" th:text="${departamento.nomeDepartamento}"></option></select>
-							</div>
-						</div>
-						
-						<div class="row">
-							<div class="form-group col-sm-3">
-								<label for="input-funcionario-nome">Código</label> <input
-									id="input-funcionario-codigo" type="text" class="form-control" th:field="*{codigo}" />
-							</div><div class="form-group col-sm-3">
-								<label for="input-funcionario-nome">Nome</label> <input
-									id="input-funcionario-nome" type="text" class="form-control" th:field="*{nome}" placeholder="Digite o nome" />
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group col-sm-5">
-								<label for="input-funcionario-endereco">Endereço</label> <input
-									id="input-funcionario-endereco" type="text" class="form-control" th:field="*{endereco}" placeholder="Digite o nome e número da rua"></input>
-							</div>
-						</div>
+		<!-- Pesquisa rápida -->
+		<div>
+			<div class="col-sm-6">
+				<label for="pesquisa">Pesquisa Rápida</label> <input
+					class="col-sm-6 form-control" id="pesquisa" type="text"
+					placeholder="Digite o nome do professor" />
+			</div>
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Nome</th>
+						<th>Departamento</th>
+						<th>Endereço</th>
+						<th>Data de Nascimento</th>
+					</tr>
+				</thead>
+				<tbody id="tabela-pesquisa">
 
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="form-group">
-									<label for="input-funcionario-nascimento">Data de
-										nascimento</label> <input id="input-funcionario-nascimento"
-										type="text" class="form-control" th:field="*{dataNascimento}"/>
-								</div>
-							</div>
-						</div>
+				</tbody>
+			</table>
+		</div>
 
-						<div class="form-group">
-							<button class="btn  btn-primary" type="submit">Salvar</button>
-						</div>
-				</div>
-			</form>
-		</section>
 
-		<!-- 	Fim do conteudo -->
+		<script th:src="@{javascripts/jquery-3.1.1.min.js}"></script>
+		<script th:src="@{javascripts/jquery.mask.js}"></script>
+		<script th:src="@{javascripts/mascara.js}"></script>
+		<script th:src="@{javascripts/pesquisaProfessor.js}"></script>
+
+	</section>
+
+	<!-- 	Fim do conteudo -->
 
 </body>
 </html>

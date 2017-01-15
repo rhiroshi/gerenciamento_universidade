@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Cadastro de Atividade</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{stylesheets/vendors.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{stylesheets/algaworks.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{stylesheets/application.css}" />
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+<style rel="stylesheet">
+.checkbox input[type="checkbox"]:checked+input+label::after {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+}
+</style>
+>
+</head>
+<body>
+
+
+	<!-- Comeca Conteudo -->
+	<section layout:fragment="conteudo">
+
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Cadastro de Atividade</h1>
+			</div>
+		</div>
+		<form method="POST" th:object="${atividade}">
+			<div class="container-fluid">
+
+				<div class="alert alert-success alert-dismissible " role="alert"
+					th:if="${not #strings.isEmpty(mensagem)}">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span th:text="${mensagem}"></span>
+				</div>
+
+				<div class="alert  alert-danger  alert-dismissible" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<th:block th:each="erro : ${#fields.detailedErrors()}">
+						<i class="fa  fa-exclamation-circle"></i>
+						<span th:text="${erro.message}"></span>
+					</th:block>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-3">
+						<label for="input-atividade-codigo">Número da atividade</label> <input
+							id="input-atividade-codigo" type="text" class="form-control"
+							th:field="*{codigo}" placeholder="Digite o número da atividade" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-3">
+						<label for="input-atividade-descricao">Descrição da
+							atividade</label> <input id="input-atividade-descricao" type="text"
+							class="form-control" th:field="*{descricao}"
+							placeholder="Digite a descrição da atividade" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-3">
+						<label for="input-atividade-descricao">Peso da
+							atividade</label> <input id="input-atividade-peso" type="text"
+							class="form-control" th:field="*{peso}"
+							placeholder="Digite a peso da atividade" />
+					</div>
+				</div>
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</section>
+
+	<!-- 	Fim do conteudo -->
+
+	<script th:src="@{javascripts/vendors.min.js}"></script>
+	<script th:src="@{javascripts/algaworks.min.js}"></script>
+
+</body>
+</html>

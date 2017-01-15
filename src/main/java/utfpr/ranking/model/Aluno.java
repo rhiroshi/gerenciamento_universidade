@@ -15,9 +15,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Aluno {
-
 	@Id
-	private int codigo;
+	private Long ra;
 	@NotNull(message="Nome é obrigatório")
 	@Column(name="nomealuno", unique=true)
 	private String nomeAluno;
@@ -26,7 +25,6 @@ public class Aluno {
 	@Temporal(TemporalType.DATE)
 	@Column(name="datanascimento")
 	private Date dataNascimento;
-	
 	@NotNull(message="Endereço é obrigatório")
 	private String endereco;
 	@ManyToOne
@@ -35,17 +33,13 @@ public class Aluno {
 	@ManyToOne
 	@JoinColumn(name="departamento")
 	private Departamento departamento;
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	
+	
+	public Long getRa() {
+		return ra;
 	}
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
-	}
-	public int getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setRa(Long ra) {
+		this.ra = ra;
 	}
 	public String getNomeAluno() {
 		return nomeAluno;
@@ -68,8 +62,14 @@ public class Aluno {
 	public Curso getCurso() {
 		return curso;
 	}
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
 	public Departamento getDepartamento() {
 		return departamento;
+	}
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
 	}
 	
 	

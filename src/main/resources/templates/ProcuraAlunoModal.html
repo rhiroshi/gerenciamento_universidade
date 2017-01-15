@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link rel="stylesheet" type="text/css"
+	th:href="@{stylesheets/PesquisaModal.css}" />
+
+
+
+<div class="modal fade" id="ProcuraAlunoModal" tabindex="-1" data-keyboard="" data-backdrop="static">
+	<div class="modal-dialog">
+		    <div class="modal-content">
+		    	<div class="modal-header">		        	
+		        	<h4 class="modal-title">Pesquisa de Aluno</h4>
+		      	</div>
+		      	<div class="modal-body">
+		      		<div class="row">
+		      			<div class="col-sm-8">
+							<label for="input-procura-aluno">Nome do Aluno</label> <input
+								id="input-procura-aluno" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="row" id="div-tabela-alunos">
+		        		<table id="tabela-alunos" class="table table-condensed">
+			        		<thead>
+			        			<tr>
+			        				<th>#</th>
+			        				<th>Nome</th>
+			        				<th>Curso</th>
+			        			</tr>
+			        		</thead>
+			        		<tbody>
+			        		</tbody>
+		        		</table>
+		        	</div>
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		      	</div>
+		    </div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+		<script th:src="@{javascripts/jquery-3.1.1.min.js}"></script>
+		<script th:src="@{javascripts/pesquisaAlunos.js}"></script>
+
+</html>

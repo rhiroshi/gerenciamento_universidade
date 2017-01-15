@@ -1,0 +1,7 @@
+CREATE TABLE login(
+	id BIGINT PRIMARY KEY,
+	senha VARCHAR(128),
+	tipo INTEGER,
+	ativo boolean
+);
+INSERT INTO login VALUES(100, '$2a$10$v0Jfedf3UvaSz6.ADs1LDeGA4RfTB63y479NhRQmp1jcMPKVtOBB6', 1, true);

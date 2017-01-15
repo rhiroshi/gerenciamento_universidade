@@ -17,7 +17,7 @@ public class Funcionario {
 	
 	@Id
 	@NotNull(message="Código é obrigatório")
-	private int codigo;
+	private Long codigo;
 	@NotNull(message = "Nome é obrigatório")
 	private String nome;
 	@NotNull(message = "Endereço é obrigatório")
@@ -64,10 +64,10 @@ public class Funcionario {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public int getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 }

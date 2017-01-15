@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: RankingProfessores
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Rafael
+Built-By: Hiroshi-PC
 Implementation-Vendor-Id: utfpr
-Build-Jdk: 1.8.0_101
+Build-Jdk: 1.8.0_111
 Implementation-URL: http://projects.spring.io/spring-boot/RankingProfe
  ssores/
 Created-By: Maven Integration for Eclipse

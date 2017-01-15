@@ -22,6 +22,11 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<style rel="stylesheet">
+	.checkbox input[type="checkbox"]:checked + input + label::after{
+	font-family: 'FontAwesome';
+	content: '\f00c';
+</style>>
 </head>
 <body>
 
@@ -38,6 +43,11 @@
 			<form method="POST" th:object="${disciplina}">
 				<div class="container-fluid">
 
+					<div class="alert alert-success alert-dismissible " role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+						<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+						<span th:text="${mensagem}"></span>
+					</div>
+
 					<div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
 						<button type="button" class="close" data-dismiss="alert"
 							aria-label="Close">
@@ -48,19 +58,28 @@
 						</th:block>
 					</div>
 						
-						<div class="row">
-							<div class="form-group col-sm-3">
-								<label>Curso</label>
-								<select id="disciplina-curso" class="form-control" th:field="*{cursos}">
-									<option value="">Selecione o curso</option>
-									<option th:each="curso : ${cursos}" th:value="${curso}" th:text="${curso.nomeCurso}"></option>
-								</select>
-							</div>
-						</div>
-						
 						<div class="row"><div class="form-group col-sm-3">
 								<label for="input-disciplina-nome">Nome da disciplina</label> <input
 									id="input-disciplina-nome" type="text" class="form-control" th:field="*{nomeDisciplina}" placeholder="Digite o nome da Disciplina" />
+							</div>
+						</div>
+						<div class="row"><div class="form-group col-sm-3">
+								<label for="input-disciplina-horas-aula">Horas aula</label> <input
+									id="input-disciplina-horas-aula" type="text" class="form-control" th:field="*{horasAula}" placeholder="Digite quantas horas a disciplina exige" />
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<label>Cursos que contém a disciplina</label>
+								<div>
+									<th:block th:each="curso : ${cursos}">
+										<div class="checkbox checkbox-inline">
+											<input type="checkbox" th:value="${curso.codigo}" id="curso" th:field="*{cursos}"/>
+											<label for="curso" th:text="${curso.nomeCurso}"> </label>
+										</div>
+									</th:block>
+								</div>
 							</div>
 						</div>
 

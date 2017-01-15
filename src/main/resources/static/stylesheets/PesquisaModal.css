@@ -1,0 +1,7 @@
+#div-tabela-alunos{
+	max-heigth:500px;
+}
+#tabela-alunos tbody tr:hover, #tabela-pesquisa-professor tr:hover, #tabela-pesquisa-atividade tr:hover{
+	background:whitesmoke;
+	cursor:pointer;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/PesquisaModal.css}" />
+
+
+
+<div class="modal fade" id="ProcuraAtividadeModal" tabindex="-1" data-keyboard="" data-backdrop="static">
+	<div class="modal-dialog">
+		    <div class="modal-content">
+		    	<div class="modal-header">		        	
+		        	<h4 class="modal-title">Pesquisa de Atividade</h4>
+		      	</div>
+		      	<div class="modal-body">
+					<div class="row" id="div-tabela-atividade">
+		        		<table class="table table-condensed">
+			        		<thead>
+			        			<tr>
+			        				<th>#</th>
+			        				<th>Descricao</th>
+			        				<th>Peso</th>
+			        			</tr>
+			        		</thead>
+			        		<tbody id="tabela-pesquisa-atividade">
+			        		</tbody>
+		        		</table>
+		        	</div>
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		      	</div>
+		    </div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</html>

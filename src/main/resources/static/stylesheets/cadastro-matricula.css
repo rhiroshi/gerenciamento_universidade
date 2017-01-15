@@ -1,0 +1,13 @@
+#lista-disciplina{
+	border:1px solid lightskyblue;
+}
+#lista-disciplina table{
+	margin:0px;
+}
+#lista-disciplina table .linha:hover{
+	background:whitesmoke;
+	cursor:pointer
+}
+.escondido{
+	display:none;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/PesquisaModal.css}" />
+
+
+
+<div class="modal fade" id="NovaAtividadeModal" tabindex="-1"
+	data-keyboard="" data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Pesquisa de Atividade</h4>
+			</div>
+			<form th:action="@{/atividades/novo}">
+				<div class="modal-body">
+					<div class="align-right row col-sm-12">
+						<span>Atividades de código 66 devem descrever o que são e
+							qual o peso. O administrador irá avaliar o cadastro da atividade.</span>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-12">
+							<label for="input-nova-atividade-descricao">Descrição da
+								atividade</label> <input id="input-nova-atividade-descricao" type="text"
+								class="form-control"
+								placeholder="Digite uma breve descrição da atividade" />
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="form-group col-sm-3">
+							<label for="input-nova-atividade-peso">Peso da atividade</label>
+							<input id="input-nova-atividade-peso" type="text"
+								class="form-control" placeholder="Digite a peso da atividade" />
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" id="botao-nova-atividade-salvar"
+							class="btn btn-primary">Salvar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					</div>
+				</div>
+				<!-- Modal body -->
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+</html>

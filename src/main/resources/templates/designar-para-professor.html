@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Designar Atividade para Professor</title>
+</head>
+<body>
+
+
+	<!-- Comeca Conteudo -->
+	<section layout:fragment="conteudo">
+
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Designar Atividade para Professor</h1>
+			</div>
+		</div>
+		<form method="POST" th:object="${designacao}">
+			<div class="container-fluid">
+
+				<div class="alert alert-success alert-dismissible " role="alert"
+					th:if="${not #strings.isEmpty(mensagem)}">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span th:text="${mensagem}"></span>
+				</div>
+
+				<div class="alert  alert-danger  alert-dismissible" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<th:block th:each="erro : ${#fields.detailedErrors()}">
+						<i class="fa  fa-exclamation-circle"></i>
+						<span th:text="${erro.message}"></span>
+					</th:block>
+				</div>
+				<div class="row">
+						<div class="form-group col-sm-3">
+							<label for="input-professor">Professor</label> <input
+								id="input-professor" type="text" class="form-control"
+								th:field="*{professor.SIAPE}" placeholder="Digite o SIAPE do professor" />
+							<button class="btn  btn-primary" type="button"  data-toggle="modal" data-target="#ProcuraProfessorModal" rel="tooltip" data-placement="top">Procurar</button>
+						</div>
+						
+					<div class="form-group col-sm-3">
+						<label for="input-atividade-codigo">Código da atividade</label> <input
+							id="input-atividade-codigo" type="text" class="form-control"
+							placeholder="Selecione uma atividade da lista" disabled="disabled" /> <input
+							id="input-atividade-id" type="hidden" class="form-control"
+							th:field="*{atividade.id}"/>
+							<button class="btn  btn-primary" type="button"  data-toggle="modal" data-target="#ProcuraAtividadeModal" rel="tooltip" data-placement="top">Procurar</button>
+					</div>
+					<div id="descricaoAtividade" class="form-group col-sm-3">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="input-data-inicio">Data de Inicio</label> <input
+								id="input-data-inicio" type="text"
+								class="form-control" th:field="*{inicio}"
+								data-provide="datepicker" data-date-format="dd/mm/yyyy"
+								data-date-language="pt-BR" data-date-autoclose="true"
+								data-date-today-highlight="true" data-date-orientation="bottom" />
+								</div>
+								<div class="col-sm-3">
+							<label for="input-data-termino">Data de Término</label> <input
+								id="input-data-termino" type="text"
+								class="form-control" th:field="*{fim}"
+								data-provide="datepicker" data-date-format="dd/mm/yyyy"
+								data-date-language="pt-BR" data-date-autoclose="true"
+								data-date-today-highlight="true" data-date-orientation="bottom" />
+								</div>
+					</div>
+				</div>
+					<div class="form-group">
+						<button class="btn  btn-primary" type="submit">Salvar</button>
+					</div>
+			</div>
+		</form>
+		<div layout:include="ProcuraProfessorModal"></div>
+		<div layout:include="NovaAtividadeModal"></div>
+		<div layout:include="ProcuraAtividadeModal"></div>
+	<script th:src="@{/javascripts/jquery-3.1.1.min.js}"></script>
+	<script th:src="@{/javascripts/pesquisaAtividade.js}"></script>
+	<script th:src="@{/javascripts/novaAtividade.js}"></script>
+	<script th:src="@{/javascripts/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{/javascripts/bootstrap-datepicker.pt-BR.min.js}"></script>
+	</section>
+
+	<!-- 	Fim do conteudo -->
+</body>
+</html>

@@ -1,13 +1,12 @@
 package utfpr.ranking.model;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -17,32 +16,39 @@ public class Departamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo;
-	@OneToMany(mappedBy="departamento")
-	private Set<Funcionario> funcionarios;
+	private Long codigo;
+//	@OneToMany(mappedBy="departamento")
+//	private Set<Funcionario> funcionarios;
 	@NotNull(message="Nome é obrigatorio")
 	@Column(name="nomedepartamento", unique=true)
 	private String nomeDepartamento;
-	@OneToMany(mappedBy="departamento")
-	private Set<Curso> cursos;
-	@OneToMany(mappedBy="departamento")
-	private Set<Aluno> alunos;
-
+	@OneToOne
+	@JoinColumn(name="coordenadorDepartamento", nullable = true)
+	private Professor coordenador;
 	
-	
-	public Set<Curso> getCursos() {
-		return cursos;
+
+	public Professor getCoordenador() {
+		return coordenador;
 	}
 
-	public Set<Funcionario> getFuncionarios() {
-		return funcionarios;
+	public void setCoordenador(Professor coordenador) {
+		this.coordenador = coordenador;
 	}
 
-	public void setFuncionarios(Set<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
-	public int getCodigo() {
+//	public Set<Funcionario> getFuncionarios() {
+//		return funcionarios;
+//	}
+//
+//	public void setFuncionarios(Set<Funcionario> funcionarios) {
+//		this.funcionarios = funcionarios;
+//	}
+
+	public Long getCodigo() {
 		return codigo;
 	}
 
